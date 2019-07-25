@@ -1,4 +1,4 @@
-# - Try to find ffmpeg libraries (libavcodec, libavformat and libavutil)
+# - Try to find RedSDK libraries
 # Once done this will define
 #
 #  REDSDK_FOUND - system has RedSDK
