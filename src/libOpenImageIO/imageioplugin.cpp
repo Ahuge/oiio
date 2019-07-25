@@ -213,6 +213,7 @@ PLUGENTRY(dds);
 PLUGENTRY_RO(dicom);
 PLUGENTRY(dpx);
 PLUGENTRY(ffmpeg);
+PLUGENTRY(r3d);
 PLUGENTRY(field3d);
 PLUGENTRY(fits);
 PLUGENTRY(gif);
@@ -276,6 +277,9 @@ catalog_builtin_plugins()
     DECLAREPLUG (dpx);
 #ifdef USE_FFMPEG
     DECLAREPLUG_RO (ffmpeg);
+#endif
+#ifdef USE_REDSDK
+    DECLAREPLUG_RO (r3d);
 #endif
 #ifdef USE_FIELD3D
     DECLAREPLUG (field3d);
