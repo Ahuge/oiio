@@ -12,8 +12,6 @@
 
 OIIO_PLUGIN_NAMESPACE_BEGIN
 
-namespace r3d_pvt {
-
 // The R3D SDK requires that the output buffer is 16-byte aligned
 // and the number of bytes per row is as well. The latter is always
 // true in the current situation with the RED ONE resolutions, the
@@ -103,7 +101,7 @@ OIIO_PLUGIN_EXPORTS_BEGIN
 
 OIIO_EXPORT int r3d_imageio_version = OIIO_PLUGIN_VERSION;
 OIIO_EXPORT ImageInput *r3d_input_imageio_create () {
-return new r3d_pvt::R3DInput;
+return new R3DInput;
 }
 OIIO_EXPORT const char *r3d_input_extensions[] = { "r3d", nullptr };
 OIIO_EXPORT const char* r3d_imageio_library_version () {
@@ -122,6 +120,7 @@ R3DInput::close()
     }
     delete r3d_clip;
     FinalizeSdk();
+    return true;
 }
 
 bool
@@ -143,7 +142,7 @@ R3DInput::R3DInit(const std::string& filename, const ImageSpec& spec) {
 
     m_spec = ImageSpec(width, height, 3);
 
-    int rate[2] = { r3d_clip->MetadataItemAsInt(RMD_FRAMERATE_NUMERATOR), r3d_clip->MetadataItemAsInt(RMD_FRAMERATE_DENOMINATOR) };
+    unsigned int rate[2] = { r3d_clip->MetadataItemAsInt(RMD_FRAMERATE_NUMERATOR), r3d_clip->MetadataItemAsInt(RMD_FRAMERATE_DENOMINATOR) };
     m_spec.attribute("FramesPerSecond", TypeRational, &rate);
     m_spec.attribute("oiio:Movie", true);
     return true;
@@ -246,12 +245,6 @@ R3DInput::read_native_scanline(int subimage, int miplevel, int y, int z,
         m_stride
     );
     return true;
-}
-
-
-
-
-
 }
 
 OIIO_PLUGIN_NAMESPACE_END
