@@ -115,8 +115,8 @@ ifneq (${USE_REDSDK},)
 MY_CMAKE_FLAGS += -DUSE_REDSDK:BOOL=${USE_REDSDK}
 endif
 
-ifneq (${REDSDK_ROOT},)
-MY_CMAKE_FLAGS += -DREDSDK_ROOT:STRING=${REDSDK_ROOT}
+ifneq (${RED_ROOT},)
+MY_CMAKE_FLAGS += -DRED_ROOT:STRING=${RED_ROOT}
 endif
 
 ifneq (${USE_FIELD3D},)
@@ -539,7 +539,7 @@ help:
 	@echo "      TBB_ROOT_DIR=path        Custom Intel TBB installation"
 	@echo "      USE_FFMPEG=0             Don't build the FFmpeg plugin"
 	@echo "      USE_REDSDK=0             Don't build the R3D plugin"
-	@echo "      REDSDK_ROOT=path         Custom path for RedSDK"
+	@echo "      RED_ROOT=path            Custom path for RedSDK"
 	@echo "      USE_JPEGTURBO=0          Don't build the JPEG-Turbo even if found"
 	@echo "      JPEGTURBO_PATH=path      Custom path for JPEG-Turbo"
 	@echo "      USE_OPENJPEG=0           Don't build the JPEG-2000 plugin"
