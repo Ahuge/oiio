@@ -539,6 +539,7 @@ help:
 	@echo "      TBB_ROOT_DIR=path        Custom Intel TBB installation"
 	@echo "      USE_FFMPEG=0             Don't build the FFmpeg plugin"
 	@echo "      USE_REDSDK=0             Don't build the R3D plugin"
+	@echo "      REDSDK_ROOT=path         Custom path for RedSDK"
 	@echo "      USE_JPEGTURBO=0          Don't build the JPEG-Turbo even if found"
 	@echo "      JPEGTURBO_PATH=path      Custom path for JPEG-Turbo"
 	@echo "      USE_OPENJPEG=0           Don't build the JPEG-2000 plugin"
